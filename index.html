@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <title>Quick Cart</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-light" id="home">
+          <div class="container-fluid" style="background-color: #0f0f0e;height:100px" >
+            <a class="navbar-brand" href="#"><h3 style="color: #f78120;font-size:25px" ><img class="login" style="border-radius:100px;" src="./logo.jpeg" width="90px" height="90px"> Quick Cart </h1></a>
+            <ul class="nav nav-underline justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#home" style="color: #f78120;font-size:20px">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about" style="color: #f78120;font-size:20px">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services" style="color: #f78120;font-size:20px">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact" style="color: #f78120;font-size:20px">Contact</a>
+                </li>
+                <li>
+                    <button onclick="openForm()" class="btn btn-warning py-2 px-4">Login</button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <form class="row g-3" id="myform" style="display:none;margin-left:1000px">
+            <div class="col-auto">
+                <button type="button" class="btn-close" aria-label="Close" style="margin-top: 0px;margin-left:450px;" onclick="closeForm()"></button>
+                <br>
+                <img class="login" style="border-radius:100px;" src="./logo.jpeg" width="200px" height="200px">
+                <h1>Login</h1>
+                <p>or <a href="javascript:Form();"style="color: #ffbf00;text-decoration:none">create an account</a></p>
+                <hr style="height: 5px;width:100px">
+                <label for="staticEmail2" >Email:</label>
+                <input type="text"  class="form-control" id="staticEmail2" placeholder="mailID">
+            </div>
+            <div class="col-auto">
+                <label for="inputPassword2" >Password:</label>
+                <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-warning mb-3" onclick="closeForm()">Login</button>
+            </div>
+      </form>
+
+      <form class="row g-3" id="register" style="display:none;margin-left:1000px;">
+        <div class="col-auto">
+          <button type="button" class="btn-close" aria-label="Close" style="margin-top: 0px;margin-left:450px;" onclick="closeForm()"></button>
+          <img class="login" style="border-radius:100px;" src="./logo.jpeg" width="200px" height="200px">
+          <h1>Register</h1>
+          <p>or <a href="javascript:openForm();"style="color: #ffbf00;text-decoration:none">already having?Login</a></p>
+          <hr style="height: 5px;width:100px">
+          <label for="name" >Email:</label>
+          <input type="text"  class="form-control" id="name" placeholder="Name">
+        </div>
+        <div class="col-auto">
+          <label for="staticEmail2" >Email:</label>
+          <input type="text"  class="form-control" id="staticEmail2" placeholder="mailID">
+        </div>
+        <div class="col-auto">
+          <label for="inputPassword2" >Password:</label>
+          <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-warning mb-3" onclick="openForm()">Register</button>
+        </div>
+      </form>
+
+
+      <script>
+        function openForm(){
+          document.getElementById("myform").style.display="block"; 
+          document.getElementById("register").style.display="none";
+              }
+        
+        function closeForm(){
+            document.getElementById("myform").style.display="none";
+            document.getElementById("register").style.display="none";
+        } 
+        function Form(){
+          document.getElementById("myform").style.display="none";
+          document.getElementById("register").style.display="block";
+        }
+      </script>
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="margin-top: 10px;">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./1.jpg" style="height : 600px" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./2.jpg" style="height : 600px" class="d-block w-100" alt="...">
+                    </div>
+                        <div class="carousel-item">
+                        <img src="./3.jpg" style="height : 600px" class="d-block w-100" alt="...">
+                        </div>
+                    <div class="carousel-item">
+                        <img src="./4.jpg"  style="height : 600px" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+                </button>
+        </div>
+        <div class="row" id="about" style="margin-top:500px;margin-bottom:200px">
+            <div class="col-lg-6">
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card" style="width:20rem;margin-left:20px">
+                            <img id="img" src="./about.png">
+                        </div>
+                    </div>
+                        <div class="col-md-6">
+                            <div class="card" style="width:15rem;margin-left:20px;margin-top:30px">
+                                <img id="img" src="./about.png">
+                            </div>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col-md-6">
+                        <div class="card" style="width:15rem;margin-left:50px;margin-top:30px">
+                            <img id="img" src="./about.png">
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="card" style="width:20rem;margin-left:20px">
+                            <img id="img" src="./about.png">
+                        </div>
+                        </div>
+                </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card card-body border-light" id="card" style="margin-right: 10px;margin-top:100px" >
+                        <br>
+                        <h1 style="color: #ffbf00;"><b>About Us</b></h1>
+                        <hr>
+                        <h2 class="mb-4">Shop Smart. <i class="fa fa-utensils text-primary me-2"></i>Shop Quick!!!</h2>
+                        <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                        <p style="text-align:justify">Quick Cart is your one-stop destination for seamless, speedy, and smart shopping. Whether you’re grabbing daily essentials or discovering new favorites, Quick Cart brings the convenience of online shopping right to your fingertips — anytime, anywhere.
+                        Our mission is simple: to save your time, simplify your life, and deliver what you need — fast. With a wide range of products, secure payments, real-time tracking, and customer-first support, Quick Cart is redefining the way people shop.Driven by innovation and powered by a passion for excellence, we're here to make your shopping experience smoother, quicker, and more enjoyable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="container" style="margin-bottom:20px;" id="services"> 
+        <h1 style="text-align: center;color: #ffbf00;"><b>Services By Us</b></h1>
+        <br>
+        <div class="row" style="margin-left:100px">
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:18rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h5 class="card-title">Express Delivery: </h5>
+                <p class="card-text" style="text-align:justify">"Quick Cart" Get your orders delivered at lightning speed. Quick Cart offers same-day or next-day delivery for select products, ensuring you get what you need when you need it.</p>
+                <a href="#" class="btn btn-warning">Read More</a>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:18rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h5 class="card-title">Smart Cart Suggestions:</h5>
+                <p class="card-text" style="text-align:justify">Our smart algorithms learn your habits and recommend relevant products, deals, and bundles. From your favorite brands to essentials you might’ve forgotten, Quick Cart makes your cart smarter.</p>
+                <a href="#" class="btn btn-warning">Read More</a>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:18rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h5 class="card-title">Scheduled Orders:</h5>
+                <p class="card-text" style="text-align:justify">With Quick Cart’s Scheduled Orders feature, customers can select the exact date and time they want their delivery — ideal for managing busy lifestyles or planning ahead for events.</p>
+                <a href="#" class="btn btn-warning">Read More</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row" style="margin-left:100px" >
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:18rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h5 class="card-title">Multi-Vendor Marketplace:</h5>
+                <p class="card-text" style="text-align:justify">Shop from multiple sellers in a single cart. We bring local stores, independent brands, and top national retailers together in one easy-to-use platform— all in one app..</p>
+                <a href="#" class="btn btn-warning">Read More</a>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:18rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h5 class="card-title">Contactless Payments:</h5>
+                <p class="card-text" style="text-align:justify">Quick Cart offers a secure and fully contactless payment experience, designed for speed, safety, and simplicity. At checkout, users can choose from a range of digital payment options</p>
+                <a href="#" class="btn btn-warning">Read More</a>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:18rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h5 class="card-title">Subscription Plans:</h5>
+                <p class="card-text" style="text-align:justify">Never run out of essentials again. Quick Cart's Subscription Plans allow users to automate the delivery of frequently needed items, saving both time and effort without the hassle of reordering every time.</p>
+                <a href="#" class="btn btn-warning">Read More</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s" id="contact" >
+            <div class="row g-0">
+                <div class="col-md-12  d-flex align-items-center">
+                    <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                        <h1 style="color: #ffbf00;">Contact us</h1>
+                        <hr style="height: 5px;width:250px">
+                        <h1 class="text-black mb-4">Happy to serve you!!</h1>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                        <label for="name">Your Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="datetime" placeholder="Contact Number" />
+                                        <label for="datetime">Contact Number</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                        <label for="email">Your Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Feedback" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Feedback</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Your Address" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Your Address</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-warning w-50 py-3" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" id="footer" >
+          <h3 class="ff-secondary text-start fw-normal mb-4" style="color:#f78120;margin-left:500px">Save Time. Save Money. Shop Smart with <b>Quick Cart</b>.</h3>
+          <div class="container py-5">
+              <div class="row g-5">
+                  <div class="col-lg-3 col-md-6">
+                      <h4 class="section-title ff-secondary text-start text-light fw-normal mb-4">Company</h4>
+                      <a class="btn btn-link" style="color:#f78120;text-decoration:none" href="">About Us</a>
+                      <a class="btn btn-link" style="color:#f78120;text-decoration:none" href="">Contact Us</a>
+                      <a class="btn btn-link" style="color:#f78120;text-decoration:none" href="">Reservation</a>
+                      <a class="btn btn-link" style="color:#f78120;text-decoration:none" href="">Privacy Policy</a>
+                      <a class="btn btn-link" style="color:#f78120;text-decoration:none" href="">Terms & Condition</a>
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                      <h4 class="section-title ff-secondary text-start text-light fw-normal mb-4">Contact</h4>
+                      <p class="mb-2"><i class="fa fa-map-marker me-3"></i>12th Street, CBE, TN, India</p>
+                      <p class="mb-2"><i class="fa fa-phone me-3"></i>+91 1234567890</p>
+                      <p class="mb-2"><i class="fa fa-envelope me-3"></i>quickcart@quick.com</p>
+                      <div class="d-block pt-2" id="links">
+                          <a class="btn btn-outline-light btn-social" href="#home"><i class="fa fa-twitter"></i></a>
+                          <a class="btn btn-outline-light btn-social" href="#home"><i class="fa fa-facebook-official"></i></a>
+                          <a class="btn btn-outline-light btn-social" href="#home"><i class="fa fa-youtube"></i></a>
+                          <a class="btn btn-outline-light btn-social" href="#home"><i class="fa fa-linkedin"></i></a>
+                      </div>
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                      <h4 class="section-title ff-secondary text-start text-light fw-normal mb-4">Available</h4>
+                      <h5 class="text-light fw-normal">Monday - Saturday</h5>
+                      <p>09AM - 09PM</p>
+                      <h5 class="text-light fw-normal">Sunday</h5>
+                      <p>10AM - 08PM</p>
+                  </div>
+                  <div class="col-lg-3 col-md-6" >
+                    <img src="./last.png">
+                  </div>
+          </div>
+         <br>
+          <div class="container">
+              <div class="copyright">
+                  <div class="row">
+                      <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                           <a style="text-decoration: none;color:#f78120" href="#">@Quick Cart</a> | All Right Reserved. 
+                      </div>
+                      <div class="col-md-6 text-center text-md-end">
+                          <div class="footer-menu">
+                              <a style="color:#f78120;text-decoration:none" href="#home">Home</a>
+                              <a style="color:#f78120;text-decoration:none" href="#contact">Help</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>

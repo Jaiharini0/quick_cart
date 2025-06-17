@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J-Query</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        *{
+            margin-top: 0;
+        }
+        .change{
+            color:orange;
+            background-color: black;
+        }
+
+        #one{
+            display: none;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-light" id="home" >
+          <div class="container-fluid" style="background-color: #0f0f0e;height:100px" >
+            <a class="navbar-brand" href="#"><h3 style="color: #f78120;font-size:25px" ><img class="login" style="border-radius:100px;" src="./logo.jpeg" width="90px" height="90px"> Quick Cart </h1></a>
+            <ul class="nav nav-underline justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="./index.html" style="color: #f78120;font-size:20px">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html" style="color: #f78120;font-size:20px">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html" style="color: #f78120;font-size:20px">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html" style="color: #f78120;font-size:20px">Contact</a>
+                </li>
+                <li>
+                    <button onclick="openForm()" class="btn btn-warning py-2 px-4">Login</button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Login -->
+
+        <form class="row g-3" id="myform" style="display:none;margin-left:1000px;margin-bottom:200px;">
+            <div class="col-12">
+                <button type="button" class="btn-close" aria-label="Close" style="margin-top: 0px;margin-left:450px;" onclick="closeForm()"></button>
+                <img class="login" style="border-radius:100px;" src="./logo.jpeg" width="150px" height="150px">
+                <h1>Login</h1>
+                <p>or <a href="javascript:Form();"style="color: #ffbf00;text-decoration:none">create an account</a></p>
+                <hr style="height: 5px;width:100px">
+                <label for="name" >Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Name" required>
+            </div>
+            <div class="col-12">
+                <label for="inputPassword2" >Password:</label>
+                <input type="password" class="form-control" id="inputPassword2" placeholder="Password" required>
+            </div>
+            <div class="col-12">
+                <button type="button" class="btn btn-warning mb-3" id="bun">Login</button>
+            </div>
+      </form>
+
+      <!-- Register -->
+
+      <form class="row g-3" id="register" style="display:none;margin-left:1000px;margin-bottom:50px;">
+        <div class="col-auto">
+          <button type="button" class="btn-close" aria-label="Close" style="margin-top: 0px;margin-left:450px;" onclick="closeForm()"></button>
+          <img class="login" style="border-radius:100px;" src="./logo.jpeg" width="150px" height="150px">
+          <h1>Register</h1>
+          <p>or <a href="javascript:openForm();"style="color: #ffbf00;text-decoration:none">already having? Login</a></p>
+          <hr style="height: 5px;width:100px">
+          <label for="name" >Name:</label>
+          <input type="text"  class="form-control name1" id="name" placeholder="Name" required>
+        </div>
+        <div class="col-auto">
+          <label for="staticEmail2" >Email:</label>
+          <input type="text"  class="form-control" id="staticEmail2" placeholder="mailID" required>
+        </div>
+        <div class="col-auto">
+          <label for="inputPassword2" >Password:</label>
+          <input type="password" class="form-control" id="inputPassword2" placeholder="Password" required>
+        </div>
+        <div class="col-auto">
+          <button type="button" class="btn btn-warning mb-3" onclick="openForm()">Register</button>
+        </div>
+      </form>
+
+      <!-- Script for Login and Register -->
+
+      <script>
+        function openForm(){
+          document.getElementById("myform").style.display="block"; 
+          document.getElementById("register").style.display="none";
+              }
+        
+        function closeForm(){
+            document.getElementById("myform").style.display="none";
+            document.getElementById("register").style.display="none";
+        } 
+        function Form(){
+          document.getElementById("myform").style.display="none";
+          document.getElementById("register").style.display="block";
+        }
+      </script>
+
+      <!-- Quick Cart Process -->
+
+      <div class="row" style="margin-top: 50px;text-align:center" id="starting">
+            <h1 id="start1">Welcome to Quick Cart💥🛍️</h1>
+            <h3 id="greet">Feeling tired to visit shops? Click me😇🧡</h3>
+            <h3 id="one">Check out here, were we take shops to you😉</h3>
+        </div>
+
+        <!-- Orders -->
+
+        <div class="container" style="margin-bottom:20px;display:none;" id="services" > 
+        <h1 id="name1" style="text-align: center;color: #ffbf00;"><b></b></h1>
+        <br>
+        <div class="row" style="margin-left:100px">
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h3 class="card-title" style="text-align: center;color: #ffbf00;">Groceries</h3>
+                <a href="#" class="product" data-category="Groceries"><img src="https://media.istockphoto.com/id/1763361568/photo/groceries-in-red-shopping-basket-on-wooden-table-in-supermarket-aisle-in-background.jpg?s=612x612&w=0&k=20&c=K21N4IgqnsjZqtcs979pyQgeH1VYvs9RSJbdpq92_tw=" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h3 class="card-title" style="text-align: center;color: #ffbf00;">Fashion</h3>
+                <a href="#Fashion" class="product" data-category="Fashion"><img src="https://static.fibre2fashion.com//articleresources/images/23/2287/SS988ebe_Small.jpg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h3 class="card-title" style="text-align: center;color: #ffbf00;">Electronics</h3>
+                <a href="#" class="product" data-category="Electronics"><img src="https://www.vcqru.com/NewContent/front-assets/img/electronics-electricals-md.jpg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row" style="margin-left:100px" >
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h3 class="card-title" style="text-align: center;color: #ffbf00;">Kitchen</h3>
+                <a href="#" class="product" data-category="Kitchen"><img src="https://m.media-amazon.com/images/I/71WHdSJ+KFL._AC_UF894,1000_QL80_.jpg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h3 class="card-title" style="text-align: center;color: #ffbf00;">Beauty Care</h3>
+                <a href="#" class="product" data-category="Beautycare"><img src="https://d2ati23fc66y9j.cloudfront.net/category-pages/sub_category-174021874143.jpg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h3 class="card-title" style="text-align: center;color: #ffbf00;">Home Decor</h3>
+                <a href="#" class="product" data-category="Homedecor"><img src="https://m.media-amazon.com/images/I/71evTPkBL5L._AC_UF894,1000_QL80_.jpg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row" style="margin-left:100px" >
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h3 class="card-title" style="text-align: center;color: #ffbf00;">Boots & Sneakers</h3>
+                <a href="#" class="product" data-category="boots"><img src="https://www.brandkiosk.in/cdn/shop/products/6278577943.jpg?v=1709313906&width=1946" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h3 class="card-title" style="text-align: center;color: #ffbf00;">Jewelery</h3>
+                <a href="#" class="product" data-category="jewels"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsVUh5dD7jZgbTP01ck2MJHy7SeaGpTZHiaQ&s" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                <div class="card-body">
+                <h3 class="card-title" style="text-align: center;color: #ffbf00;">Stationery</h3>
+                <a href="#" class="product" data-category="stationery"><img src="https://www.verifiedmarketreports.com/images/blogs/02-24/Top%207%20Trends%20in%20the%20Stationery%20Market.png" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Fashion cart-->
+
+        <div class="container" style="margin-bottom:20px;display:none;" id="Fashion" > 
+            <button type="button" class="btn btn-warning mb-3 previous" data-category="Fashion" style="display: inline;width:200px">Previous</button>
+            <h1 id="name1" style="text-align: center;color: #ffbf00;"><b>Welcome to Fashion World👗</b></h1>
+            <br>
+            <div class="row" style="margin-left:100px">
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">T-Shirts</h3>
+                            <a href="#Tshirts" class="product" data-category="Fashion" data-subcategory="Tshirts" ><img src="https://thevastar.com/cdn/shop/files/56.png?v=1747745621&width=713" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Scarfs</h3>
+                            <a href="#" class="product" data-category="Fashion" data-subcategory="Scarfs"><img src="https://m.media-amazon.com/images/I/81ixmzBoD6L._AC_UY1100_.jpg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Salwars</h3>
+                            <a href="#" class="product" data-category="Fashion" data-subcategory="Salwars"><img src="https://wholesalemegamart.com/wp-content/uploads/2024/06/BE-231-DESIGNER-SALWAR-SUITS-WHOLESALE-3.jpeg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row" style="margin-left:100px" >
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Lehengas</h3>
+                            <a href="#Lehengas" class="product" data-category="Fashion" data-subcategory="Lehengas"><img src="https://i.pinimg.com/736x/74/dc/69/74dc6980cf1d0b0f0e4d729e59e65496.jpg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Pants</h3>
+                            <a href="#" class="product" data-category="Fashion" data-subcategory="Pants"><img src="https://m.media-amazon.com/images/I/61C7O8Wx1wL._AC_UY1100_.jpg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;height:20rem;border-radius:20px;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Froks</h3>
+                            <a href="#" class="product" data-category="Fashion" data-subcategory="Forks"><img src="https://img.tatacliq.com/images/i18//437Wx649H/MP000000022995646_437Wx649H_202407211755001.jpeg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- T-shirts -->
+
+        <div class="container" style="margin-bottom:20px;display:none;" id="Tshirts" > 
+            <button type="button" class="btn btn-warning mb-3 previous1" data-category="Fashion" data-subcategory="Tshirts" style="display: inline;width:200px">Previous</button>
+            <h1 id="name1" style="text-align: center;color: #ffbf00;"><b>T-Shirts Section💖</b></h1>
+            <br>
+            <div class="row" style="margin-left:40px">
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Navy Blue💙</h3>
+                            <a href="#blue"  class="product" data-category="Fashion" data-subcategory="Tshirts" data-type="blue" ><img src="https://www.thewalkdeal.com/cdn/shop/products/Alone-NavyBlue.jpg?v=1640675727" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Stylish White🐻‍❄️</h3>
+                            <a href="#white" class="product" data-category="Fashion" data-subcategory="Tshirts" data-type="white"><img src="https://www.thewalkdeal.com/cdn/shop/products/Never-Give-Up-TheFight.jpg?v=1640673347" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Cute Black😍</h3>
+                            <a href="#black" class="product" data-category="Fashion" data-subcategory="Tshirts" data-type="black"><img src="https://i5.walmartimages.com/asr/e20a887d-1672-4ef9-ad28-02adf89a0ee4.7aad51c240c06b8ce8eb32633749f339.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Great Grey😉</h3>
+                            <a href="#grey" class="product" data-category="Fashion" data-subcategory="Tshirts" data-type="grey"><img src="https://swettailor.com/cdn/shop/products/ST_0000s_0023_SWT0069_ST-3003HG_SoftestTee_HeatherGrey_A_800x.jpg?v=1619212426" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row" style="margin-left:40px" >
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Perfect Peach🎀</h3>
+                            <a href="#peach" class="product" data-category="Fashion" data-subcategory="Tshirts" data-type="peach"><img src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2025/JANUARY/13/KFicjDlH_86d791237a094cbab555423e62ab2257.jpg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Neon Green💚</h3>
+                            <a href="#green" class="product" data-category="Fashion" data-subcategory="Tshirts" data-type="green"><img src="https://zapvi.in/wp-content/uploads/2024/07/17.jpg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Rare Red❤️ </h3>
+                            <a href="#red" class="product" data-category="Fashion" data-subcategory="Tshirts" data-type="red"><img src="https://xcdn.next.co.uk/common/items/default/default/itemimages/3_4Ratio/product/lge/T60414s5.jpg?im=Resize,width=750" width="250" height="250" style="border-radius: 200px;justify-content:center;background-color:grey"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Bright Yellow💛</h3>
+                            <a href="#yellow" class="product" data-category="Fashion" data-subcategory="Tshirts" data-type="yellow"><img src="https://xcdn.next.co.uk/common/items/default/default/itemimages/3_4Ratio/product/lge/D33004s2.jpg?im=Resize,width=750" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navy blue Description-->
+
+            <div class="row" id="blue" style="display:none">
+                <div class="col-lg-6">
+                    <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Tshirts" data-type="blue"style="display: inline;width:200px">Previous</button>
+                    <br>
+                    <div class="card" style="width:20rem;margin-left:200px">
+                        <img id="img" src="https://www.thewalkdeal.com/cdn/shop/products/Alone-NavyBlue.jpg?v=1640675727">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                        <br>
+                        <h1 style="color: #ffbf00;"><b>Navy Blue💙</b></h1>
+                        <hr>
+                        <h2 class="mb-4">Your new favorite <i class="fa fa-utensils me-2">Blue tee</i> awaits.</h2>
+                        <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                        <p style="text-align:justify">Step up your style game with our Classic Blue Tee, designed to bring comfort and confidence wherever you go. Crafted from ultra-soft, breathable cotton, this T-shirt feels as good as it looks — perfect for casual days, weekend adventures, or layering under your favorite jacket.
+                            <ul type="bullets">
+                                <li>100% premium cotton for softness and durability.</li>
+                                <li>Vibrant Blue💙 color that stays bright wash after wash</li>
+                                <li>Classic crew neckline and comfortable fit</li>
+                                <li>Perfect for casual wear or smart layering</li>
+                            </ul>
+                        </p>
+                        <p>Price : <b>500</b></p>
+                        <p>Size Available : <b>S M L XL XXL XXXL</b> </p>
+                        <div style="display:flex; gap:20px">
+                            <button type="button" class="btn btn-warning mb-3 bun1" value="1" data-category="Fashion" data-subcategory="Tshirts" data-type="blue" style="display: inline;width:250px">Add and Buy</button>
+                            <button type="button" class="btn btn-warning mb-3 bun2" value="1" data-category="Fashion" data-subcategory="Tshirts" data-type="blue" style="display: inline;width:250px">Add and Shop</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    <!-- White Tshirt Description -->
+
+        <div class="row" id="white" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Tshirts" data-type="white" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://www.thewalkdeal.com/cdn/shop/products/Never-Give-Up-TheFight.jpg?v=1640673347">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Stylish White🤍</b></h1>
+                    <hr>
+                    <h2 class="mb-4">The Classic <i class="fa fa-utensils me-2">White Tee</i> -Pure Simplicity.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Timeless, versatile, and effortlessly cool – our White T-Shirt is a wardrobe essential. Made from soft, breathable cotton, it offers all-day comfort and a clean look that suits any style. Whether you're dressing up or keeping it casual, this classic piece adapts to your every mood and moment.
+                        <ul type="bullets">
+                            <li>100% premium cotton for softness and durability.</li>
+                            <li>Clear White🤍 color that stays bright wash after wash</li>
+                            <li>Classic crew neckline and comfortable fit</li>
+                            <li>Perfect for casual wear or smart layering</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="2" data-category="Fashion" data-subcategory="Tshirts" data-type="white" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="2" data-category="Fashion" data-subcategory="Tshirts" data-type="white" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Black Tshirt Description -->
+
+        <div class="row" id="black" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Tshirts" data-type="black" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://i5.walmartimages.com/asr/e20a887d-1672-4ef9-ad28-02adf89a0ee4.7aad51c240c06b8ce8eb32633749f339.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Cute Black🖤</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Bold in <i class="fa fa-utensils me-2">Black,  </i> silent in strength.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">A timeless classic — this black T-shirt exudes bold minimalism and elegance. Perfect for any occasion, it pairs well with everything. Let your attitude speak through the silence of black.
+                        <ul type="bullets">
+                            <li>100% premium cotton for softness and durability.</li>
+                            <li>Nice Black🖤 color that stays bright wash after wash</li>
+                            <li>Classic crew neckline and comfortable fit</li>
+                            <li>Perfect for casual wear or smart layering</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="3" data-category="Fashion" data-subcategory="Tshirts" data-type="black" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="3" data-category="Fashion" data-subcategory="Tshirts" data-type="black" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Grey Tshirt Description -->
+
+        <div class="row" id="grey" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Tshirts" data-type="grey" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://swettailor.com/cdn/shop/products/ST_0000s_0023_SWT0069_ST-3003HG_SoftestTee_HeatherGrey_A_800x.jpg?v=1619212426">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Great Grey🩶</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Grey <i class="fa fa-utensils me-2">vibes</i> , great mind.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Cool, calm, and collected. This grey T-shirt is your everyday essential — versatile, understated, and endlessly adaptable. A staple for those who embrace balance and clarity.
+                        <ul type="bullets">
+                            <li>100% premium cotton for softness and durability.</li>
+                            <li>Nice Grey🩶 color that stays bright wash after wash</li>
+                            <li>Classic crew neckline and comfortable fit</li>
+                            <li>Perfect for casual wear or smart layering</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="4" data-category="Fashion" data-subcategory="Tshirts" data-type="grey" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="4" data-category="Fashion" data-subcategory="Tshirts" data-type="grey" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Peach Tshirt Description -->
+
+        <div class="row" id="peach" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Tshirts" data-type="peach" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2025/JANUARY/13/KFicjDlH_86d791237a094cbab555423e62ab2257.jpg">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Perfect Peach🎀</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Soft tone, <i class="fa fa-utensils me-2">strong </i> soul.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">With a warm and soft tone, this peach T-shirt blends comfort and charm. Ideal for a breezy day out or a cozy vibe in, it whispers confidence with a gentle touch.
+                        <ul type="bullets">
+                            <li>100% premium cotton for softness and durability.</li>
+                            <li>Perfect Peach🎀 color that stays bright wash after wash</li>
+                            <li>Classic crew neckline and comfortable fit</li>
+                            <li>Perfect for casual wear or smart layering</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="5" data-category="Fashion" data-subcategory="Tshirts" data-type="peach" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="5" data-category="Fashion" data-subcategory="Tshirts" data-type="peach" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Green Tshirt Description -->
+
+        <div class="row" id="green" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Tshirts" data-type="green" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://zapvi.in/wp-content/uploads/2024/07/17.jpg">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Neon Green💚</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Rooted in calm, <i class="fa fa-utensils me-2">growing </i> in style.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Inspired by nature’s calm and resilience, this green T-shirt is made for those who bloom no matter the season. A fresh choice that symbolizes peace, positivity, and growth.
+                        <ul type="bullets">
+                            <li>100% premium cotton for softness and durability.</li>
+                            <li>Cool Green💚 color that stays bright wash after wash</li>
+                            <li>Classic crew neckline and comfortable fit</li>
+                            <li>Perfect for casual wear or smart layering</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="6" data-category="Fashion" data-subcategory="Tshirts" data-type="green" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="6" data-category="Fashion" data-subcategory="Tshirts" data-type="green" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Red Tshirt Description -->
+
+        <div class="row" id="red" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Tshirts" data-type="red" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://xcdn.next.co.uk/common/items/default/default/itemimages/3_4Ratio/product/lge/T60414s5.jpg?im=Resize,width=750">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Rare Red❤️</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Live loud. <i class="fa fa-utensils me-2">Love </i> red.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Make a powerful statement in red. This fiery T-shirt is made for go-getters and leaders — those who never blend in and always stand out. Passion, power, and style in one.
+                        <ul type="bullets">
+                            <li>100% premium cotton for softness and durability.</li>
+                            <li>Rare Red❤️ color that stays bright wash after wash</li>
+                            <li>Classic crew neckline and comfortable fit</li>
+                            <li>Perfect for casual wear or smart layering</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="7" data-category="Fashion" data-subcategory="Tshirts" data-type="red" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="7" data-category="Fashion" data-subcategory="Tshirts" data-type="red" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Yellow Tshirt Description -->
+
+        <div class="row" id="yellow" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Tshirts" data-type="yellow" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://xcdn.next.co.uk/common/items/default/default/itemimages/3_4Ratio/product/lge/D33004s2.jpg?im=Resize,width=750">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Bright Yellow💛</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Wear the <i class="fa fa-utensils me-2">Sunshine.</i> Shine like sun🌞</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Brighten up the room with this sunshine-yellow tee! It’s for the bold, the happy, and the unstoppable. A joyful color with a contagious vibe of optimism.
+                        <ul type="bullets">
+                            <li>100% premium cotton for softness and durability.</li>
+                            <li>Bright Yellow💛 color that stays bright wash after wash</li>
+                            <li>Classic crew neckline and comfortable fit</li>
+                            <li>Perfect for casual wear or smart layering</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="8" data-category="Fashion" data-subcategory="Tshirts" data-type="yellow" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="8" data-category="Fashion" data-subcategory="Tshirts" data-type="yellow" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Lehengas -->
+
+        <div class="container" style="margin-bottom:20px;display:none;" id="Lehengas" > 
+            <button type="button" class="btn btn-warning mb-3 previous1" data-category="Fashion" data-subcategory="Lehengas" style="display: inline;width:200px">Previous</button>
+            <h1 id="name1" style="text-align: center;color: #ffbf00;"><b>Lehengas Section💖</b></h1>
+            <br>
+            <div class="row" style="margin-left:40px">
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Girly Pink🩷</h3>
+                            <a href="#pinklehenga"  class="product" data-category="Fashion" data-subcategory="Lehengas" data-type="pinklehenga" ><img src="https://fealdeal.com/cdn/shop/files/12038_74a28635-0183-4c3f-bb2e-05128ee09518.jpg?v=1727862347" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Wavy Blue💙</h3>
+                            <a href="#bluelehenga" class="product" data-category="Fashion" data-subcategory="Lehengas" data-type="bluelehenga"><img src="https://maharanidesigner.com/wp-content/uploads/2020/09/Party-Wear-Lehenga-For-Girls.jpeg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Beauty Yellow💛</h3>
+                            <a href="#yellowlehenga" class="product" data-category="Fashion" data-subcategory="Lehengas" data-type="yellowlehenga"><img src="https://images.meesho.com/images/products/37885034/d5jar_512.webp" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Classic Red❤️</h3>
+                            <a href="#redlehenga" class="product" data-category="Fashion" data-subcategory="Lehengas" data-type="redlehenga"><img src="https://5.imimg.com/data5/ECOM/Default/2024/8/443941757/UK/OR/ZQ/28230234/lehenga-lehengacholi-lehengasaree-lehengaforgirls-lehengaforwomen-209-32594075-7c33-45ee-9f96-88ba3a-500x500.jpg" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row" style="margin-left:40px" >
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Multicolor Masti🌈</h3>
+                            <a href="#multilehenga" class="product" data-category="Fashion" data-subcategory="Lehengas" data-type="multilehenga"><img src="https://fealdeal.com/cdn/shop/files/12725_48ace010-2c3f-4deb-a44d-ed034d276f91.jpg?v=1727863499" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Perfect Orange🧡</h3>
+                            <a href="#orangelehenga" class="product" data-category="Fashion" data-subcategory="Lehengas" data-type="orangelehenga"><img src="https://images.meesho.com/images/products/179260914/4nlqx_512.webp" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Floral Green💚</h3>
+                            <a href="#greenlehenga" class="product" data-category="Fashion" data-subcategory="Lehengas" data-type="greenlehenga"><img src="https://images.meesho.com/images/products/485345855/kerkx_512.webp" width="250" height="250" style="border-radius: 200px;justify-content:center;background-color:grey"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card" style="width: 18rem;height:20rem;border:none;overflow:hidden" >
+                        <div class="card-body">
+                            <h3 class="card-title" style="text-align: center;color: #ffbf00;">Bold Black🖤</h3>
+                            <a href="#blacklehenga" class="product" data-category="Fashion" data-subcategory="Lehengas" data-type="blacklehenga"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-j_9hX50_bey_csPUUudebSch1R471uJDEPbx4RRpMDSqM387Xku9x0-CsK5jRjL2E5Y&usqp=CAU" width="250" height="250" style="border-radius: 200px;justify-content:center"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pink Lehenga Description -->
+
+        <div class="row" id="pinklehenga" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Lehengas" data-type="pinklehenga" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://fealdeal.com/cdn/shop/files/12038_74a28635-0183-4c3f-bb2e-05128ee09518.jpg?v=1727862347">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Girly Pink🩷</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Blush bold. <i class="fa fa-utensils me-2">Twirl </i> proud.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Step into grace with this stunning pink lehenga — a celebration of charm, culture, and confidence. With delicate embroidery and a flowing silhouette, it's the perfect blend of tradition and modern flair. Whether it's a wedding or a festive evening, this lehenga turns every moment into a magical one.
+                        <ul type="bullets">
+                            <li>Premium silk-blend fabric with a luxurious feel</li>
+                            <li>Beautiful Pink🌸 hue that radiates elegance</li>
+                            <li>Intricate embroidery with shimmering threadwork</li>
+                            <li>Flared silhouette perfect for graceful twirls</li>
+                            <li>Comfortable waistband for a snug, flattering fit</li>
+                            <li>Ideal for weddings, festivals, and special celebrations</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>2500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="9" data-category="Fashion" data-subcategory="Lehengas" data-type="pinklehenga" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="9" data-category="Fashion" data-subcategory="Lehengas" data-type="pinklehenga" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Blue Lehenga Description -->
+
+        <div class="row" id="bluelehenga" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Lehengas" data-type="bluelehenga" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://maharanidesigner.com/wp-content/uploads/2020/09/Party-Wear-Lehenga-For-Girls.jpeg">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Wavy Blue💙</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Grace in every glance. <i class="fa fa-utensils me-2">Royal </i> in every twirl.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Embrace timeless elegance with this royal blue lehenga — a masterpiece of poise and tradition. With its flowing design, intricate details, and bold color, it's made for the spotlight. A perfect pick for evening functions, sangeet nights, or grand celebrations.
+                        <ul type="bullets">
+                            <li>Rich royal blue💙 color that exudes confidence</li>
+                            <li>Fine net or silk fabric for a graceful drape</li>
+                            <li>Delicate sequin or zari work for festive sparkle</li>
+                            <li>Lightweight and breathable, yet grand in appearance</li>
+                            <li>Tailored fit to enhance traditional elegance</li>
+                            <li>Perfect for receptions, parties, and weddings</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>2500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="10" data-category="Fashion" data-subcategory="Lehengas" data-type="bluelehenga" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="10" data-category="Fashion" data-subcategory="Lehengas" data-type="bluelehenga" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Yellow Lehenga Description -->
+
+        <div class="row" id="yellowlehenga" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Lehengas" data-type="yellowlehenga" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://images.meesho.com/images/products/37885034/d5jar_512.webp">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Beauty Yellow💛</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Sunshine <i class="fa fa-utensils me-2">stitched </i> into every swirl.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Brighten every celebration with this sunny yellow lehenga — joyful, vibrant, and full of life. Its warm hue and detailed craftsmanship make it perfect for daytime functions and festive occasions.
+                        <ul type="bullets">
+                            <li>Sunny yellow🌼 color that brings happiness</li>
+                            <li>Lightweight cotton-silk blend for comfort</li>
+                            <li>Fine embroidery and mirror work for sparkle</li>
+                            <li>Flowy silhouette that moves gracefully</li>
+                            <li>Comfort-fit waistband for all-day wear</li>
+                            <li>Ideal for mehendi, haldi, and spring festivals</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>2500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="11" data-category="Fashion" data-subcategory="Lehengas" data-type="yellowlehenga" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="11" data-category="Fashion" data-subcategory="Lehengas" data-type="yellowlehenga" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Red Lehenga Description -->
+
+        <div class="row" id="redlehenga" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Lehengas" data-type="redlehenga" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://5.imimg.com/data5/ECOM/Default/2024/8/443941757/UK/OR/ZQ/28230234/lehenga-lehengacholi-lehengasaree-lehengaforgirls-lehengaforwomen-209-32594075-7c33-45ee-9f96-88ba3a-500x500.jpg">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Classic Red❤️</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Passion <i class="fa fa-utensils me-2">stitched </i> in tradition.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Celebrate tradition with this fiery red lehenga — bold, beautiful, and timeless. A classic choice that symbolizes love, passion, and celebration on your special day.
+                        <ul type="bullets">
+                            <li>Vibrant red❤️ color that commands attention</li>
+                            <li>Luxurious velvet or silk fabric for richness</li>
+                            <li>Intricate embroidery with gold thread accents</li>
+                            <li>Heavy flare for a regal silhouette</li>
+                            <li>Perfectly tailored for comfort and style</li>
+                            <li>Ideal for bridal wear and grand occasions</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>2500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="12" data-category="Fashion" data-subcategory="Lehengas" data-type="redlehenga" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="12" data-category="Fashion" data-subcategory="Lehengas" data-type="redlehenga" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Multicolor Lehenga Description -->
+
+        <div class="row" id="multilehenga" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Lehengas" data-type="multilehenga" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://fealdeal.com/cdn/shop/files/12725_48ace010-2c3f-4deb-a44d-ed034d276f91.jpg?v=1727863499">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Multicolor Masti🌈🎀</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Colors that <i class="fa fa-utensils me-2">dance </i> with you.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Celebrate the festival of colors with this vibrant multicolor lehenga — playful, lively, and full of joy. Perfect for festive events and those who love a burst of hues.
+                        <ul type="bullets">
+                            <li>Bright multicolor🌈 palette that dazzles</li>
+                            <li>Light and breathable cotton blend fabric</li>
+                            <li>Colorful embroidery and mirror work</li>
+                            <li>Flared skirt that twirls with every step</li>
+                            <li>Comfortable fit for long celebrations</li>
+                            <li>Ideal for Holi, Navratri, and festive gatherings</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>2500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="13" data-category="Fashion" data-subcategory="Lehengas" data-type="multilehenga" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="13" data-category="Fashion" data-subcategory="Lehengas" data-type="multilehenga" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Orange Lehenga Description -->
+
+        <div class="row" id="orangelehenga" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Lehengas" data-type="orangelehenga" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://images.meesho.com/images/products/179260914/4nlqx_512.webp">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Perfect Orange🧡</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Glow <i class="fa fa-utensils me-2">bright </i>, dance light.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Turn heads with this radiant orange lehenga — warm, vibrant, and full of energy. Perfect for lively celebrations and festive occasions with a splash of brightness.
+                        <ul type="bullets">
+                            <li>Radiant orange🍊 shade that glows</li>
+                            <li>Soft silk or georgette fabric for elegance</li>
+                            <li>Delicate thread and bead embellishments</li>
+                            <li>Flared design for dramatic effect</li>
+                            <li>Comfort-fit waistband for ease</li>
+                            <li>Perfect for festive events and weddings</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>2500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="14" data-category="Fashion" data-subcategory="Lehengas" data-type="orangelehenga" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="14" data-category="Fashion" data-subcategory="Lehengas" data-type="orangelehenga" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Green Lehenga Description -->
+
+        <div class="row" id="greenlehenga" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Lehengas" data-type="greenlehenga" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://images.meesho.com/images/products/485345855/kerkx_512.webp">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Floral Green💚</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Nature’s .<i class="fa fa-utensils me-2">elegance </i> in every stitch</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Step into nature’s embrace with this enchanting green lehenga — fresh, elegant, and full of charm. Perfect for garden weddings, daytime events, or any occasion that calls for a touch of tradition.
+                        <ul type="bullets">
+                            <li>Fresh emerald green🍃 shade that captivates</li>
+                            <li>Soft silk fabric with a smooth finish</li>
+                            <li>Delicate zari and bead embellishments</li>
+                            <li>Elegant flared design for graceful movement</li>
+                            <li>Comfortable fit that flatters every figure</li>
+                            <li>Perfect for weddings, receptions, and festive days</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>2500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="15" data-category="Fashion" data-subcategory="Lehengas" data-type="greenlehenga" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="15" data-category="Fashion" data-subcategory="Lehengas" data-type="greenlehenga" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Black Lehenga Description -->
+
+        <div class="row" id="blacklehenga" style="display:none">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-warning mb-3 previous11" data-category="Fashion" data-subcategory="Lehengas" data-type="blacklehenga" style="display: inline;width:200px">Previous</button>
+                <br>
+                <div class="card" style="width:20rem;margin-left:200px">
+                    <img id="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-j_9hX50_bey_csPUUudebSch1R471uJDEPbx4RRpMDSqM387Xku9x0-CsK5jRjL2E5Y&usqp=CAU">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-body border-light" id="card" style="margin-right: 15px;" >
+                    <br>
+                    <h1 style="color: #ffbf00;"><b>Bold Black🖤</b></h1>
+                    <hr>
+                    <h2 class="mb-4">Classic <i class="fa fa-utensils me-2">charm </i> in every fold.</h2>
+                    <h3 style="color: #ffbf00;"> <b>We provide the best offers as ever</b></h3>
+                    <p style="text-align:justify">Make a statement with this sleek black lehenga — mysterious, elegant, and effortlessly chic. A modern classic for evening parties and stylish celebrations.
+                        <ul type="bullets">
+                            <li>Elegant black🖤 shade that never goes out of style</li>
+                            <li>Lightweight chiffon or georgette fabric</li>
+                            <li>Subtle sequins and threadwork for shimmer</li>
+                            <li>Flowing silhouette for graceful movement</li>
+                            <li>Comfort-fit waistband for all-night wear</li>
+                            <li>Perfect for cocktail parties and receptions</li>
+                        </ul>
+                    </p>
+                    <p>Price : <b>2500</b></p>
+                    <p>Size Available : <b>S M L XL XXL XXXL</b> </p> 
+                    <div style="display:flex; gap:20px">
+                        <button type="button" class="btn btn-warning mb-3 bun1" value="16" data-category="Fashion" data-subcategory="Lehengas" data-type="blacklehenga" style="display: inline;width:250px">Add and Buy</button>
+                        <button type="button" class="btn btn-warning mb-3 bun2" value="16" data-category="Fashion" data-subcategory="Lehengas" data-type="blacklehenga" style="display: inline;width:250px">Add and Shop</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <h2 id="two" style="text-align: center;"></h2>
+        <br>
+        <br>
+        <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s" id="address" style="text-align: center;display:none;" >
+            <div class="row g-0">
+                <div class="col-md-12  d-flex align-items-center">
+                    <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                        <h1 style="color: #ffbf00;">Address To Delivery</h1>
+                        <hr style="height: 5px;width:250px;margin:0 auto">
+                        <h1 class="text-black mb-4">Happy to serve you!!</h1>
+                        <form class="row g-3" >
+                            <div class="col-md-6">
+                                <label for="fullName" class="form-label"><b>Full Name</b></label>
+                                <input type="text" class="form-control" id="fullName" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label"><b>Phone Number</b></label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="addressLine1" class="form-label"><b>Address Line 1</b></label>
+                                <textarea class="form-control" placeholder="Door/Flat No, Area" id="addressLine1" style="height: 100px"></textarea>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="addressLine2" class="form-label"><b>Address Line 2</b></label>
+                                <textarea class="form-control" placeholder="Apartment, landmark (optional)" id="addressLine2" style="height: 100px"></textarea>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="city" class="form-label"><b>City</b></label>
+                                <input type="text" class="form-control" id="city" required>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="state" class="form-label"><b>State</b></label>
+                                <input type="text" class="form-control" id="state" required>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="zip" class="form-label"><b>PIN Code</b></label>
+                                <input type="text" class="form-control" id="zip" maxlength="6" required>
+                            </div>
+
+                            <div class="col-12">
+                                <button type="button" class="btn btn-warning mb-3" id="address2">Submit and checkout</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        
+
+        
+        <h3 id="two1"style="text-align: center;"></h3>
+        <br>
+        <br>
+
+        <form id="form3" style="display: none;text-align:center;">
+            <button type="button" class="btn btn-warning mb-3" id="cash">Cash On Delivery💵</button>
+            <button type="button" class="btn btn-warning mb-3" id="pay">Online PAY🛜</button>
+        </form>
+        
+        <form id="form4" style="display: none;text-align:center;">
+            <label id="amount1"><b></b></label>
+            <input type="number" id="pay1">
+            <br>
+            <br>
+            <button type="button" class="btn btn-warning mb-3" id="send">SEND📤</button>
+        </form>
+
+        <h4 id="send1" style="text-align: center;"></h4>
+        <br>
+
+        <h4 id="cash2" style="text-align: center;"></h4>
+        <br>
+
+        <h4 id="msg1" style="text-align: center;"></h4>
+        <br>
+
+        <h4 id="msg2" style="text-align: center;"></h4>
+        <br>
+
+        <h4 id="msg3" style="text-align: center;"></h4>
+        <br>
+
+    </div>
+    
+    <script>
+        var dress="";
+        var purchase=[];
+        var amount=0;
+
+
+        $(document).ready(function () {
+            $("#greet").click(function(){
+                $("#start1").addClass("change");
+                $("#greet").hide(1000);
+                $("#one").show(1000);
+                $("#myform").show(1000);
+                });
+            $("#bun").click(function(){
+                if(($("#name").val()!="") && ($("#inputPassword2").val()!="" )){
+                    $("#myform").hide(500);
+                    $("#name1").text("Hello "+$("#name").val()+"❤️");
+                    $("#start1").hide(500);
+                    $("#one").hide(500);
+                    $("#services").show(2000);
+                }
+                else{
+                    alert("Enter the username and password");
+                }
+                //$("#form2").show(2000);
+            });
+            $(".product").click(function(){
+                $("#services").hide(1000);
+                const cat = $(this).data("category");     
+                const subcat = $(this).data("subcategory");
+                const type = $(this).data("type");
+                $("#"+cat).show(3000);
+                
+            });
+            
+            $("[data-subcategory]").click(function(){
+                const cat = $(this).data("category");
+                const subcat = $(this).data("subcategory");
+                //console.log(subcat);
+                $("#"+cat).hide();
+                $("#"+subcat).show(4000);
+            })
+
+            $("[data-type]").click(function(){
+                const cat = $(this).data("category");     
+                const subcat = $(this).data("subcategory");
+                const type = $(this).data("type");
+                $("#"+subcat).hide(500);
+                $("#"+type).show();
+                console.log(subcat);
+                //$("#form2").show();
+            });
+            $(".bun1").click(function(){
+                let value1 = $(this).val();
+                console.log(value1);
+                switch(value1){
+                    case "1":
+                        dress="Navy Blue Tshirt💙";
+                        amount=500;
+                        break;
+                    case "2":
+                        dress="Stylish White Tshirt🤍";
+                        amount=500;
+                        break;
+                    case "3":
+                        dress="Cute Black🖤";
+                        amount=500;
+                        break;
+                    case "4":
+                        dress="Great Grey🩶";
+                        amount=500;
+                        break;
+                    case "5":
+                        dress="Perfect Peach🎀";
+                        amount=500;
+                        break;
+                    case "6":
+                        dress="Neon Green💚";
+                        amount=500;
+                        break;
+                    case "7":
+                        dress="Rare Red❤️";
+                        amount=500;
+                        break;
+                    case "8":
+                        dress="Bright Yellow💛";
+                        amount=500;
+                        break;
+                    case "9":
+                        dress="Girly Pink🩷";
+                        amount=2500;
+                        break;
+                    case "10":
+                        dress="Wavy Blue💙";
+                        amount=2500;
+                        break;
+                    case "11":
+                        dress="Bright Yellow💛";
+                        amount=2500;
+                        break;
+                    case "12":
+                        dress="Classic Red❤️";
+                        amount=2500;
+                        break;
+                    case "13":
+                        dress="Multicolor Masti🌈🎀";
+                        amount=2500;
+                        break;
+                    case "14":
+                        dress="Perfect Orange🧡";
+                        amount=2500;
+                        break;
+                    case "15":
+                        dress="Floral Green💚";
+                        amount=2500;
+                        break;
+                    case "16":
+                        dress="Bold Black🖤";
+                        amount=2500;
+                        break;
+                }
+                purchase.push({ dress: dress, amount: amount });
+                $("#form2").hide(500);
+                let dresses=purchase[0].dress;
+                let total_amount=0;
+                    for(let i=1;i<purchase.length;i++){
+                        dresses+=", "+purchase[i].dress;
+                    }
+                    for(let i=0;i<purchase.length;i++){
+                        total_amount+=purchase[i].amount;
+                    }
+                dress=dresses;
+                amount=total_amount;
+                const type=$(this).data("type");
+                $("#"+type).hide(500);
+                $("#two").text("The order is placed for "+dress+" 😇");
+                $("#address").show(500);
+            });
+            $(".bun2").click(function(){
+                let value = $(this).val();
+                console.log(value);
+                switch(value){
+                    case "1":
+                        dress="Navy Blue Tshirt💙";
+                        amount=500;
+                        break;
+                    case "2":
+                        dress="Stylish White Tshirt🤍";
+                        amount=500;
+                        break;
+                    case "3":
+                        dress="Cute Black🖤";
+                        amount=500;
+                        break;
+                    case "4":
+                        dress="Great Grey🩶";
+                        amount=500;
+                        break;
+                    case "5":
+                        dress="Perfect Peach🎀";
+                        amount=500;
+                        break;
+                    case "6":
+                        dress="Neon Green💚";
+                        amount=500;
+                        break;
+                    case "7":
+                        dress="Rare Red❤️";
+                        amount=500;
+                        break;
+                    case "8":
+                        dress="Bright Yellow💛";
+                        amount=500;
+                        break;
+                    case "9":
+                        dress="Girly Pink🩷";
+                        amount=2500;
+                        break;
+                    case "10":
+                        dress="Wavy Blue💙";
+                        amount=2500;
+                        break;
+                    case "11":
+                        dress="Bright Yellow💛";
+                        amount=2500;
+                        break;
+                    case "12":
+                        dress="Classic Red❤️";
+                        amount=2500;
+                        break;
+                    case "13":
+                        dress="Multicolor Masti🌈🎀";
+                        amount=2500;
+                        break;
+                    case "14":
+                        dress="Perfect Orange🧡";
+                        amount=2500;
+                        break;
+                    case "15":
+                        dress="Floral Green💚";
+                        amount=2500;
+                        break;
+                    case "16":
+                        dress="Bold Black🖤";
+                        amount=2500;
+                        break;
+                }
+                
+                    purchase.push({ dress: dress, amount: amount });
+                    alert(`🛒 Added: ${dress} - ₹${amount}`);
+                    const subcat = $(this).data("subcategory");
+                    const type=$(this).data("type");
+                    $("#"+type).hide();
+                    $("#"+subcat).show(500);
+                    console.log(type);
+                    console.log(subcat);
+                    //$("#form2").show(500);
+
+            });
+
+            $(".previous").click(function(){
+                const cat = $(this).data("category");
+                const subcat = $(".product").data("subcategory");
+                const type=$(".product").data("type");
+                $("#"+cat).hide();
+                $("#"+subcat).hide();
+                $("#"+type).hide();
+                $("#services").show();
+            });
+
+            $(".previous1").click(function(){
+                const cat = $(this).data("category");
+                const subcat = $(this).data("subcategory");
+                const type=$(".product").data("type");
+                $("#"+cat).show();
+                $("#"+subcat).hide();
+                $("#"+type).hide();
+                $("#services").hide();
+            });
+
+            $(".previous11").click(function(){     
+                const cat = $(this).data("category");
+                const subcat = $(this).data("subcategory");
+                const type=$(this).data("type");
+                $("#"+subcat).show();
+                $("#"+cat).hide();
+                $("#"+type).hide();
+                $("#services").hide();
+            });
+
+            $("#address2").click(function(){
+                $("#address").hide();
+                $("#two1").text("Payment Type?💰💸");
+                $("#form3").show(500);
+            });
+
+            $("#pay").click(function(){
+
+                console.log(purchase);
+                $("#form3").hide(500);
+                $("#form4").show(500);
+                if(purchase.length==0){
+                    $("#amount1").text(amount+" only😇");
+                }
+                else{
+                    let dresses=purchase[0].dress;
+                    let total_amount=0;
+                    for(let i=1;i<purchase.length;i++){
+                        dresses+=", "+purchase[i].dress;
+                    }
+                    for(let i=0;i<purchase.length;i++){
+                        total_amount+=purchase[i].amount;
+                    }
+                    dress=dresses;
+                    amount=total_amount;
+                    console.log(amount);
+                    console.log(dress);
+                    $("#amount1").text(amount+" only😇");
+                }
+                
+            });
+            $("#send").click(function(){
+                $("#form4").hide(500);
+                if($("#pay1").val()==amount){
+                    $("#two1").hide();
+                    $("#send1").text("Successfully Sent🎀✨, You will receive your "+dress+" very quickly🎁");                  
+                    $("#msg1").text("Thank you for choosing us😍  Visit again🥰") ;
+                }
+                else{
+                    $("#form4").show(500);
+                    $("#cash2").hide();
+                    $("#send1").text("The payment you send is incorrect🥺, kindly check and pay🎀. The amount You have sent is: "+$("#pay1").val()+" but the amount is: "+amount);
+                }
+                
+            });
+            $("#cash").click(function(){
+                    let dresses=purchase[0].dress;
+                    for(let i=1;i<purchase.length;i++){
+                        dresses+=","+purchase[i].dress;
+                    }
+                    /*for(let i=0;i<purchase.length;i++){
+                        amount+=purchase[i].amount;
+                    }*/
+                    dress=dresses;
+                    console.log(dress);
+                    $("#send1").hide();
+                    $("#two1").hide();
+                    $("#form3").hide(500);
+                $("#cash2").text("You will receive your "+dress+" very quickly🎁. ");
+                $("#msg2").text("The amount is "+amount);
+                $("#msg3").text("Thank you for choosing us😍 Visit again🥰");
+            });    
+            
+        });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
